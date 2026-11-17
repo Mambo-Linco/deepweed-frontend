@@ -19,10 +19,7 @@ export default function Layout() {
   const { pathname } = useLocation()
   const navigate = useNavigate()
 
-  // useEffect(() => window.scrollTo(0, 0), [pathname])
-  useEffect(() => {
-  window.scrollTo(0, 0);
-}, [pathname]);
+  useEffect(() => {window.scrollTo(0, 0)}, [pathname])
 
   // badge on the feedback link: admins = new feedback, farmers = unread replies
   const [badge, setBadge] = useState(0)

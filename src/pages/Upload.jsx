@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import StepShell from '../components/StepShell.jsx'
 import Webcam from '../components/Webcam.jsx'
@@ -6,6 +6,7 @@ import { Camera, Folder, Sprout, Sun, Leaf, Upload as UploadIcon } from '../comp
 import { useIdentify } from '../lib/identify.jsx'
 import { useI18n } from '../lib/i18n.jsx'
 import { validateFile } from '../lib/image.js'
+import { api } from '../lib/api.js'
 
 export default function Upload() {
   const { setFile } = useIdentify()
@@ -15,6 +16,8 @@ export default function Upload() {
   const [drag, setDrag] = useState(false)
   const [error, setError] = useState('') // an i18n key
   const [cam, setCam] = useState(false)
+
+  useEffect(() => { api.wake() }, []) // free hosting sleeps when idle; wake it while the user chooses a photo
 
   function accept(file) {
     const problem = validateFile(file)

@@ -1,5 +1,7 @@
 // Thin fetch wrapper around the DeepWeed Express API.
+// Hosted builds call the backend at VITE_API_URL (set at build time). Only `npm run dev` uses '' (Vite's dev proxy).
 const BASE = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '')
+if (import.meta.env.PROD && !BASE) console.error('VITE_API_URL was not set when this site was built - API calls will fail. See DEPLOY.md.')
 const TOKEN_KEY = 'deepweed.token'
 
 export const tokenStore = {
@@ -58,6 +60,8 @@ export const api = {
   scans: (limit = 20, offset = 0) => request(`/api/scans?limit=${limit}&offset=${offset}`),
   deleteScan: (id) => request(`/api/scans/${id}`, { method: 'DELETE' }),
   sendFeedback: (b) => request('/api/feedback', { method: 'POST', body: b }),
+  // fire-and-forget: wakes a sleeping free-tier backend, which in turn wakes the model service
+  wake: () => fetch(`${BASE}/api/predict/status`).catch(() => {}),
   myFeedback: () => request('/api/feedback/my'),
   feedbackInbox: (status) => request(`/api/feedback?limit=200${status ? `&status=${status}` : ''}`),
   feedbackSummary: () => request('/api/feedback/summary'),

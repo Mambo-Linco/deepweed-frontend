@@ -1,17 +1,20 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
+import { assertHostedApiUrl } from './scripts/check-env.mjs'
 
-// In dev, /api is proxied to the Express backend so there are no CORS problems.
-// Backend default port is 5000 (see backend/.env). Override with VITE_BACKEND_URL.
-export default defineConfig(({ mode }) => {
+export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
+
+  // `npm run build` (hosting): the backend address must be a real, non-local address.
+  if (command === 'build') assertHostedApiUrl(env.VITE_API_URL)
+
   return {
     plugins: [react()],
     server: {
       port: 5173,
-      proxy: {
-        '/api': { target: env.VITE_BACKEND_URL || 'http://localhost:5000', changeOrigin: true },
-      },
+      // Development only (`npm run dev`): forward /api to a backend running on your computer.
+      // This is NOT part of the built site.
+      proxy: { '/api': { target: env.VITE_BACKEND_URL || 'http://localhost:5000', changeOrigin: true } },
     },
   }
 })
