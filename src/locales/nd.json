@@ -27,7 +27,7 @@
  "step.modelApp": "AI MODEL → APP",
  "step.appDb": "APP ↔ IDATHABEYSI YEMITHI",
  "err.generic": "Kukhona okungahambanga kuhle.",
- "err.networkWeb": "Asikwazi ukufinyelela iseva. I-backend iyasebenza yini?",
+ "err.networkWeb": "Asikwazi ukufinyelela iseva ku-{url}. I-backend iyasebenza yini, njalo leli yikheli elilungileyo yini?",
  "err.networkMobile": "Asikwazi ukufinyelela iseva ku-{url}. Qinisekisa ukuthi i-backend iyasebenza lekheli ku-I-akhawunti → Server settings.",
  "err.notImage": "Khetha ifayili lesithombe (JPG, PNG loba HEIC).",
  "err.tooBig": "Lesi sithombe sikhulu kuka-25 MB.",

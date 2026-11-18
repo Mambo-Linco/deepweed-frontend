@@ -27,7 +27,7 @@
  "step.modelApp": "AI MODEL → APP",
  "step.appDb": "APP ↔ DATABASE YEMISHONGA",
  "err.generic": "Pane chakaenda zvisiri izvo.",
- "err.networkWeb": "Hatigoni kusvika kuserver. Backend yakamiswa here?",
+ "err.networkWeb": "Hatigoni kusvika kuserver pa{url}. Backend iri kushanda here, uye kero iyi ndiyo chaiyo here?",
  "err.networkMobile": "Hatigoni kusvika kuserver pa{url}. Tarisa kuti backend iri kushanda uye kero iri muAkaundi → Server settings.",
  "err.notImage": "Sarudza faira remufananidzo (JPG, PNG kana HEIC).",
  "err.tooBig": "Mufananidzo uyu wakakura kudarika 25 MB.",

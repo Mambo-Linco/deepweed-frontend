@@ -31,7 +31,7 @@ async function request(path, { method = 'GET', body, headers = {}, raw = false, 
   try {
     res = await fetch(`${BASE}${path}`, { method, headers: h, body: payload })
   } catch {
-    throw Object.assign(new ApiError('Cannot reach the server. Is the backend running?', 0), { key: 'err.networkWeb' })
+    throw Object.assign(new ApiError('Cannot reach the server. Is the backend running?', 0), { key: 'err.networkWeb', params: { url: BASE || window.location.origin } })
   }
   if (res.status === 204) return null
   const data = await res.json().catch(() => null)

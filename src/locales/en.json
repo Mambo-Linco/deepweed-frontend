@@ -27,7 +27,7 @@
  "step.modelApp": "AI MODEL → APP",
  "step.appDb": "APP ↔ HERBICIDE DATABASE",
  "err.generic": "Something went wrong.",
- "err.networkWeb": "Cannot reach the server. Is the backend running?",
+ "err.networkWeb": "Cannot reach the server at {url}. Is the backend running, and is this the right address?",
  "err.networkMobile": "Cannot reach the server at {url}. Check that the backend is running and the address in Account → Server settings.",
  "err.notImage": "Please choose an image file (JPG, PNG or HEIC).",
  "err.tooBig": "That image is larger than 25 MB.",
