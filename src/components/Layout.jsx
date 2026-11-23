@@ -21,7 +21,7 @@ export default function Layout() {
 
   useEffect(() => {window.scrollTo(0, 0)}, [pathname])
 
-  // badge on the feedback link: admins = new feedback, farmers = unread replies
+  // badge on the feedback link: admins = neFw feedback, farmers = unread replies
   const [badge, setBadge] = useState(0)
   const refreshBadge = useCallback(() => {
     if (!user) { setBadge(0); return }
@@ -42,7 +42,7 @@ export default function Layout() {
         <Link to="/identify/upload" className="brand" aria-label={t('nav.home')}>
           <Logo />
           <span>
-            <strong>FieldGuide</strong>
+            <strong>DeepWeed</strong>
             <small>{t('brand.sub')}</small>
           </span>
         </Link>
